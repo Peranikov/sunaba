@@ -2,11 +2,14 @@
 
 
 [[projects]]
-  digest = "1:b8158599e492595cd2ee70033a6e0e348907fd6bbf9a7fa138e15c8d6a73ff1f"
+  digest = "1:4ba40028cab3c252dd01c646be8bef2eee86b4a3e66f0b7493839583ca646ea6"
   name = "github.com/99designs/gqlgen"
   packages = [
+    "complexity",
+    "example/dataloader",
     "graphql",
     "graphql/introspection",
+    "handler",
   ]
   pruneopts = "UT"
   revision = "b128a29122e8ca8ada5f34cc18338fa7c10fc5b4"
@@ -19,6 +22,14 @@
   pruneopts = "UT"
   revision = "51b298ff305e72cfd29166dccc3f9878e82f9fdc"
   version = "v1.0.2"
+
+[[projects]]
+  digest = "1:1c70b4d7285f792bd387c1adac08825715147fa210b3d2826ffd2bf56be9455b"
+  name = "github.com/go-chi/chi"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "da24bba8dcd4021cafac38724bf10dccc97c3e36"
+  version = "v4.0.2"
 
 [[projects]]
   digest = "1:f5ce1529abc1204444ec73779f44f94e2fa8fcdb7aca3c355b0c95947e4005c6"
@@ -35,12 +46,23 @@
   version = "v1.3.2"
 
 [[projects]]
-  branch = "master"
-  digest = "1:bf46bbd0cbee3799757d65ac37d4797b6d5105efb9296d32dd089b912b43df6f"
-  name = "github.com/peranikov/sunaba"
-  packages = ["grpc/lib"]
+  digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
   pruneopts = "UT"
-  revision = "8afc0cd81474024f98421d12650a6501276bf2cb"
+  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
+  version = "v1.4.0"
+
+[[projects]]
+  digest = "1:d15ee511aa0f56baacc1eb4c6b922fa1c03b38413b6be18166b996d82a0156ea"
+  name = "github.com/hashicorp/golang-lru"
+  packages = [
+    ".",
+    "simplelru",
+  ]
+  pruneopts = "UT"
+  revision = "7087cb70de9f7a8bc0a10c375cb0d2280a8edf9c"
+  version = "v0.5.1"
 
 [[projects]]
   digest = "1:b4e8aaca88f799355f4ac560bce4293fb85ff21003dd0d5741ca503f7a788e91"
@@ -168,13 +190,18 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/99designs/gqlgen/example/dataloader",
     "github.com/99designs/gqlgen/graphql",
     "github.com/99designs/gqlgen/graphql/introspection",
-    "github.com/peranikov/sunaba/grpc/lib",
+    "github.com/99designs/gqlgen/handler",
+    "github.com/go-chi/chi",
+    "github.com/golang/protobuf/proto",
     "github.com/vektah/gqlparser",
     "github.com/vektah/gqlparser/ast",
     "golang.org/x/sync/errgroup",
     "google.golang.org/grpc",
+    "google.golang.org/grpc/codes",
+    "google.golang.org/grpc/status",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

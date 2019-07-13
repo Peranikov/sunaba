@@ -1,9 +1,10 @@
 //go:generate protoc -I ../helloworld --go_out=plugins=grpc:../helloworld ../helloworld/helloworld.proto
 
 // Package main implements a greeterServer for Greeter service.
-package main
+package grpc
 
 import (
+	"io"
 	"log"
 	"net"
 	"strings"
@@ -26,25 +27,32 @@ func (s *greeterServer) SayHelloStream(srv pb.Greeter_SayHelloStreamServer) erro
 	var names []string
 	for {
 		req, err := srv.Recv()
-		if err != nil {
+		if err == io.EOF {
 			break
 		}
 
+		if err != nil {
+			return err
+		}
+
+		log.Println("grpc" + req.Name)
 		names = append(names, req.Name)
 	}
 
 	return srv.SendAndClose(&pb.HelloReply{Message: "Hello " + strings.Join(names, ", ")})
 }
 
-func main() {
+func Run() error {
 	lis, err := net.Listen("tcp", port)
-	log.Printf("started to listen %v\n", port)
+	log.Printf("started gRPC to listen %v\n", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		return err
 	}
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, NewGreeterServer())
 	if err := s.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		return err
 	}
+
+	return nil
 }

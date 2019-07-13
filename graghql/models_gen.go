@@ -6,10 +6,6 @@ type Greet struct {
 	Message string `json:"message"`
 }
 
-type Hello struct {
-	Message string `json:"message"`
-}
-
 type Person struct {
 	Name string `json:"name"`
 }
