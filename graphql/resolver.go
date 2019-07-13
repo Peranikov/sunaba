@@ -1,4 +1,4 @@
-package graghql
+package graphql
 
 import (
 	"context"
