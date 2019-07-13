@@ -1,0 +1,11 @@
+type Query {
+    greet(persons: [Person!]!): Greet!
+}
+
+type Greet {
+    message: String!
+}
+
+input Person {
+    name: String!
+}
