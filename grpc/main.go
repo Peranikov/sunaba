@@ -8,7 +8,7 @@ import (
 	"net"
 	"strings"
 
-	pb "github.com/peranikov/grpc-sandbox/grpc/lib"
+	pb "github.com/peranikov/sunaba/grpc/lib"
 	"google.golang.org/grpc"
 )
 
