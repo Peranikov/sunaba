@@ -11,7 +11,8 @@ protoc:
 
 .PHONY: gqlgen
 gqlgen:
-	@cd graghql; go run github.com/99designs/gqlgen -v
+	@mv graphql/resolver.go graphql/resolver.bak.go
+	@cd graphql; go run github.com/99designs/gqlgen -v
 
 .PHONY: dep
 dep:
