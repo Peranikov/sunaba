@@ -35,7 +35,6 @@ func (s *greeterServer) SayHelloStream(srv pb.Greeter_SayHelloStreamServer) erro
 			return err
 		}
 
-		log.Println("grpc" + req.Name)
 		names = append(names, req.Name)
 	}
 

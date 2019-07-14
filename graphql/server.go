@@ -3,7 +3,12 @@ package graphql
 import (
 	"github.com/99designs/gqlgen/handler"
 	"github.com/go-chi/chi"
+	"log"
 	"net/http"
+)
+
+const (
+	addr = ":8082"
 )
 
 func Run() error {
@@ -14,7 +19,8 @@ func Run() error {
 		NewExecutableSchema(Config{Resolvers: &Resolver{}}),
 	))
 
-	if err := http.ListenAndServe(":8082", router); err != nil {
+	log.Printf("started graghql to listen http://localhost%v\n", addr)
+	if err := http.ListenAndServe(addr, router); err != nil {
 		return err
 	}
 
